@@ -1,0 +1,67 @@
+---
+import Navbar from "../components/navbar.astro"
+import Cart from "../layouts/payment.astro"
+import "../styles/navbar.scss"
+---
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <title> Cart </title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        
+        <style>
+            .toolbar-wrapper {
+				display:flex;
+				max-width: fit-content;
+				gap: 1rem;
+				flex-direction: column;
+				position: fixed;
+				bottom: 50px;
+			    right: 20px;
+			}
+			.toolbar {
+			  background-color: #1a1a1a;
+			  color: #fff;
+			  border: none;
+			  padding: 10px 12px;
+			  border-radius: 50%;
+			  cursor: pointer;
+			  font-size: 20px;
+			  z-index: 1000;
+			  transition: background-color 0.3s;
+			  line-height: 1;
+			  text-align: center;
+			}
+			
+			.toolbar:hover {
+			  background-color: #333;
+			}
+			
+			@media (max-width: 800px) {
+			  #toolbar {
+				display: none;
+			  }
+			}
+        </style>
+    </head>
+<body>	
+    <main style="position: relative;">
+        <Navbar />
+		<Cart />
+
+        <div class="toolbar-wrapper">
+            <button class="toolbar" id="scrollToTopBtn" aria-label="Scroll to top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
+            </button>
+        </div>
+    </main>
+
+	<script src="../utils/scripts.ts"></script>
+</body>
+</html>

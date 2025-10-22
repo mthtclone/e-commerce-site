@@ -1,5 +1,9 @@
 ---
+import Navbar from "../components/navbar.astro"
+import ProductPage from "../layouts/index-prod.astro"
 
+import "../styles/productGrid.scss";
+import "../styles/navbar.scss"
 ---
 
 <html lang="en">
@@ -8,9 +12,164 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title> E-Commerce Site</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+		<style>
+
+			:global(:root) {
+				--primary-font: "Outfit", sans-serif;
+			}
+
+			.toolbar-wrapper {
+				display:flex;
+				max-width: fit-content;
+				gap: 1rem;
+				flex-direction: column;
+				position: fixed;
+				bottom: 50px;
+			    right: 20px;
+			}
+			.toolbar {
+			  background-color: #1a1a1a;
+			  color: #fff;
+			  border: none;
+			  padding: 10px 12px;
+			  border-radius: 50%;
+			  cursor: pointer;
+			  font-size: 20px;
+			  z-index: 1000;
+			  transition: background-color 0.3s;
+			  line-height: 1;
+			  text-align: center;
+			}
+			
+			.toolbar:hover {
+			  background-color: #333;
+			}
+			
+			@media (max-width: 800px) {
+			  #toolbar {
+				display: none;
+			  }
+			}
+
+			/* Overlay */
+			#overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.6);
+				opacity: 0;
+				pointer-events: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 1000;
+				transition: opacity 0.3s ease;
+			}
+
+			#overlay.show {
+				opacity: 1;
+				pointer-events: auto;
+			}
+
+			.overlay-container {
+				font-family: var(--primary-font);
+				display: flex;
+				flex-direction: column;
+				background: white;
+				padding: 20px;
+				min-width: 800px;
+				max-height: 700px;
+				height: 100%;
+				position: relative;
+				outline: 2px solid #ddd;
+				outline-offset: 4px;
+
+				opacity: 0;
+				transform: translateY(-20px);
+				transition: opacity 0.3s ease, transform 0.3s ease;
+			}
+
+			#overlay.show .overlay-container {
+				opacity: 1;
+				transform: translateY(0);  
+			}
+
+			.overlay-container h1 {
+				border-bottom: 1px solid #333;
+			}
+			.overlay-container svg {
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 20px;
+				cursor: pointer;
+			}
+
+			.overlay-container ul {
+				display: flex;
+				flex-direction: column;
+				margin-top: 0.5rem;
+				list-style: none;
+                padding: 0;
+				width: 100%;
+				overflow-y: auto;
+			} 
+
+			:global(.overlay-container span) {
+				display: flex;
+				margin-right: auto;
+			}
+			:global(.overlay-container p) {
+				display: flex;
+				align-items: flex-end;
+			}
+
+			:global(.overlay-container li) {
+				display: flex;
+                align-items: center;
+				justify-content: space-between;
+                gap: 1rem;
+                padding: 0.25rem 0.25rem;
+				border-bottom: 1px solid #969696;
+			}
+			
+			</style>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body>	
+		<main style="position: relative;">
+			<Navbar />
+			<ProductPage />
+
+			<div id="overlay">
+				<div class="overlay-container">
+					<h1> Order List </h1>
+					<svg class="close-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+					<ul id="overlay-list">
+						<!-- Dynamically Injected Data -->
+					</ul>
+				</div>
+			</div>
+
+			<div class="toolbar-wrapper">
+				<button class="toolbar" id="checkcart" aria-label="Check your Cart" onclick="togglePopup()">
+					<svg id="closebtn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-basket-icon lucide-shopping-basket"><path d="m15 11-1 9"/><path d="m19 11-4-7"/><path d="M2 11h20"/><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/><path d="M4.5 15.5h15"/><path d="m5 11 4-7"/><path d="m9 11 1 9"/></svg>
+				</button>
+
+				<button class="toolbar" id="scrollToTopBtn" aria-label="Scroll to top">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
+				</button>
+			</div>
+
+		</main>
+
+		<script src="../utils/scripts.ts"></script>
 	</body>
 </html>

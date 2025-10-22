@@ -1,0 +1,88 @@
+---
+import "../styles/payment.scss"
+---
+<section class="banner">
+    <h1> 
+        Thanks for shopping with us!
+    </h1>
+
+    <div class="contact-support">
+        <p>Contact our support team.</p>
+        <p><a href="mailto:info@gmail.com">info@gmail.com</a></p>
+    </div>
+</section>
+<section class="payment-container">
+    <div class="nested-payment-container">
+        <div class="checkout-container">
+            <!-- Customer Information -->
+            <div class="customer-info">
+                <h2>Customer Information</h2>
+                <form id="checkout-form">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Name" />
+
+                    <label for="contact">Phone / Email *</label>
+                    <input type="text" id="contact" name="contact" placeholder="Ph.Number (or) Email" required />
+
+                    <label for="address">Shipping Address *</label>
+                    <textarea id="address" name="address" placeholder="" required></textarea>
+                </form>
+            </div>
+
+             <!-- Payment Method -->
+             <div class="payment-method">
+                <h2>Payment Method</h2>
+                <div class="payment-cards">
+                    <div class="payment-card" data-method="kpzpay">
+                        <h3>KPZPay</h3>
+                        <p>Scan QR code with your KPZPay app to pay.</p>
+                    </div>
+                    <div class="payment-card" data-method="cod">
+                        <h3>Cash on Delivery</h3>
+                        <p>Pay with cash when your order arrives.</p>
+                    </div>
+                </div>
+                <p class="instructions">
+                    Click a payment method to select. KPZPay will display a QR code below.
+                </p>
+            </div>
+
+            <!-- Confirm Payment -->
+            <div class="confirm-payment">
+                <button type="button" id="confirm-btn" disabled>
+                    Confirm & Submit Order
+                </button>
+                <p class="confirmation-note">
+                    Your order will be processed after payment verification. 
+                    If you chose KPZPay, please complete the payment before submitting.
+                </p>
+            </div>
+        </div>
+        
+        <div class="checkout-display-container">
+            <div class="cart-display">
+                <header class="cart-display-header">
+                    <h1> Your Cart </h1>
+                </header>
+                
+                <!-- Show the list from the cart -->
+                <div id="checkout">
+                    <div class="cart-list-display">
+                        <ul id="checkout-list">
+                            <!-- Populate Cart List Here  -->
+                        </ul>
+
+                        <footer class="total-amount">
+                            <p> Shipping Fee: </p>
+                            <p id="grand-total">
+                                <span>Total:</span>
+                                <span>$0.00</span> 
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

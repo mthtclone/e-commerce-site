@@ -1,0 +1,66 @@
+$sidebar-width: 220px;
+$bg-sidebar: #1e1e2f;
+$bg-main: #f7f7fc;
+$color-text: #e0e0f0;
+$color-text-main: #333;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: $bg-main;
+  color: $color-text-main;
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+
+  .sidebar {
+    width: $sidebar-width;
+    background-color: $bg-sidebar;
+    color: $color-text;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        color: $color-text;
+        text-decoration: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        transition: background 0.2s;
+
+        &:hover {
+            --tw-shadow-color: #0003;
+            --tw-inset-shadow: 0 .15rem .3rem var(--tw-shadow-color, #0003),
+                                0 .06rem .03rem #ffffff1a inset;
+            box-shadow: var(--tw-inset-shadow);
+          }
+  
+          // Active state: separate
+          &.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+  }
+}
+  .main-panel {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+}

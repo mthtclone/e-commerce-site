@@ -1,0 +1,16 @@
+---
+const activeTab = Astro.props.activeTab || "orders";
+---
+
+<aside class="sidebar">
+  <div class="logo">MyDashboard</div>
+  <nav>
+    <a href="/panel/orderreq?secret_key=kishi"
+     class={"menu-item" + (activeTab === "orders" ? " active" : "")} 
+     data-tab="orders">Order Requests
+    </a>
+    <!-- future tabs here, for example:
+    <a href="#" class="menu-item" data-tab="settings">Settings</a>
+    -->
+  </nav>
+</aside>

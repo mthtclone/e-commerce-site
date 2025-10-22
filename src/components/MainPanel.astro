@@ -1,0 +1,4 @@
+---
+const fragment = Astro.props.fragment || "<p>Loading...</p>";
+---
+<div id="content" class="main-panel" set:html={fragment}></div>

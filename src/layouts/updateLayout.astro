@@ -1,0 +1,33 @@
+---
+const updates = await Astro.glob('..//updates/*.md');
+
+updates.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+);
+---
+
+<section class="updates-container">
+    <div class="updates-notice">
+        Check here for shop updates, new arrivals, and special offers.
+    </div>
+
+    <ul class="nested-updates-container">
+        {updates.map(({ frontmatter, Content }) => (
+            <li class="update-item">
+                <img src={frontmatter.image} alt={frontmatter.alt} class="update-image" />
+                <div class="update-details">
+                    <p class="update-message">{frontmatter.title}</p>
+                    <div class="update-meta">
+                        <span class="update-date">{frontmatter.date}</span>
+                    </div>
+                    <p class="update-source">From {frontmatter.source}</p>
+                    <div class="update-content">
+                        <Content />
+                    </div>
+                </div>
+            </li>
+        ))}
+    </ul>
+</section>
