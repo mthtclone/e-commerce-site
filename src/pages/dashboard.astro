@@ -27,7 +27,6 @@ const defaultMsg = "<p>Welcome...</p>";
   
   // Render a single order
   const renderOrder = (order: Order) => {
-    // Avoid duplicate rendering if already present
     if (mainPanel.querySelector(`.order-fragment[data-order-id="${order.id}"]`)) return;
   
     const div = document.createElement("div");
@@ -55,7 +54,6 @@ const defaultMsg = "<p>Welcome...</p>";
             status: "confirmed",
           })
         );
-        // Update status locally for instant UI feedback
         const statusP = div.querySelector("p:nth-of-type(6)");
         if (statusP) statusP.textContent = "Status: confirmed";
         btn.disabled = true;
@@ -71,7 +69,7 @@ const defaultMsg = "<p>Welcome...</p>";
       const res = await fetch("/api/orders");
       if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
       const orders: Order[] = await res.json();
-      mainPanel.innerHTML = ""; // clear previous
+      mainPanel.innerHTML = ""; 
       if (Array.isArray(orders)) {
         orders.forEach(renderOrder);
       } else {
@@ -104,10 +102,8 @@ const defaultMsg = "<p>Welcome...</p>";
         );
         if (div) {
           if (msg.status === "confirmed") {
-            // Remove confirmed order from dashboard
             div.remove();
           } else {
-            // Update status text for non-confirmed updates (optional)
             const statusSpan = div.querySelector<HTMLSpanElement>(".status");
             if (statusSpan) statusSpan.textContent = msg.status;
           }
@@ -118,7 +114,6 @@ const defaultMsg = "<p>Welcome...</p>";
     }
   });
   
-  // Initial load
   loadOrders();
   </script>
 
