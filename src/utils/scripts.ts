@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           card.innerHTML = `
             <img src="${prod.image}" alt="${prod.name}" />
-            <p class="product-title">${prod.name}</p>
+            <a class="product-title" href="/product/${prod.name}">${prod.name}</a>
             <p class="product-categories">${prod.categories}</p>
             <p class="product-price">$${prod.price.toFixed(2)}</p>
             <div class="quantity-selector">

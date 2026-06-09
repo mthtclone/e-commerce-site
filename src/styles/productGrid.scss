@@ -14,10 +14,7 @@
 
         .left-cat-container {
             flex: 0 0 250px; 
-            border-radius: 12px;
-            box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
             padding: 1rem;
-            background-color: #f9f9f9;
             display: flex;
             flex-direction: column;
 
@@ -88,40 +85,46 @@
                 
                 .product-card {
                     padding: 1rem;
-                    border-radius: 12px;
+                    border-radius: 24px;
                     text-align: center;
                     background-color: #ffffff;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
-                    transition: 0.2s ease;
+                    transition: box-shadow 0.2s ease;
 
                     &.highlight {
-                        border: 3px solid #ff002696; 
+                        box-shadow: inset 0 -60px 36px -28px rgba(16, 185, 129, 0.4);
                     }
                 
                     img {
-                        width: 100%;
-                        height: auto;
-                        object-fit: cover;
+                        width: 200px;
+                        height: 300px; 
+                        object-fit: contain;
                         border-radius: 6px;
                     }
 
                     .product-title {
                         font-weight: 600;
                         text-align: center;
+                        color: black;
+                        cursor: pointer;
+                        text-decoration: none;
+                        margin-bottom: 1rem;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
                     }
 
                     .product-categories {
                         display: inline-block;
                         background-color: #f0f0f0;
-                        border: 1px solid #d4d4d4;
                         color: #333;
                         font-size: 0.7rem;
                         font-weight: 600;
                         padding: 4px 10px;
-                        border-radius: 12px; 
                         margin-top: 6px;
                         margin-bottom: 4px;
                         letter-spacing: 0.5px;
