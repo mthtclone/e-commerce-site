@@ -14,7 +14,8 @@
 
         .left-cat-container {
             flex: 0 0 250px; 
-            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
             padding: 1rem;
             background-color: #f9f9f9;
             display: flex;
@@ -86,10 +87,10 @@
                 gap: 1rem;
                 
                 .product-card {
-                    border: 1px solid #ccc;
                     padding: 1rem;
+                    border-radius: 12px;
                     text-align: center;
-                    background-color: #fafafa;
+                    background-color: #ffffff;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
@@ -104,6 +105,7 @@
                         width: 100%;
                         height: auto;
                         object-fit: cover;
+                        border-radius: 6px;
                     }
 
                     .product-title {
@@ -172,14 +174,21 @@
             .pagination {
                 margin-top: 2rem;
                 text-align: center;
+                display: flex;
+                justify-content: center; 
 
                 button {
                     background-color: #000000;
                     color: white;
                     border: none;
                     cursor: pointer;
-                    padding: 0.5rem 1rem;
+                    padding: 0.05rem 0.7rem;
                     margin: 0 0.25rem;
+                    border-radius: 50px;
+
+                    svg {
+                        width: 32px;
+                    }
                 
                         &:hover {
                             background-color: #adadad;
@@ -188,14 +197,20 @@
                     }
 
                 span {
+                    width: 40px;
+                    height: 40px;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
                     margin: 0 0.25rem;
-                    padding: 0.5rem 0.75rem;
+
                     border: 1px solid #ccc;
+                    border-radius: 50%;
 
                     &.active {
-                        background-color: #000;
+                        background-color: #000000b9;
                         color: #fff;
-                        border-color: #000;
+                        border: none;
                     }
                       
                 }

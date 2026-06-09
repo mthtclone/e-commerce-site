@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const paginationContainer = document.querySelector(".pagination") as HTMLElement;
 
     let products: Product[] = [];
-    const productsPerPage = 6;
+    const productsPerPage = 20;
     let currentPage = 1;
     let totalPages = 1;
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         paginationContainer.innerHTML = "";
     
         const prevBtn = document.createElement("button");
-        prevBtn.textContent = "<";
+        prevBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>`;
         prevBtn.disabled = currentPage === 1;
         prevBtn.onclick = () => {
           if (currentPage > 1) {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const nextBtn = document.createElement("button");
-        nextBtn.textContent = ">";
+        nextBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>';
         nextBtn.disabled = currentPage === totalPages;
         nextBtn.onclick = () => {
         if (currentPage < totalPages) {
