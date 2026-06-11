@@ -1,5 +1,6 @@
 interface Product {
     id: number;
+    slug: string;
     name: string;
     price: number;
     categories: string;
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           card.innerHTML = `
             <img src="${prod.image}" alt="${prod.name}" />
-            <a class="product-title" href="/product/${prod.name}">${prod.name}</a>
+            <a class="product-title" href="/products/${prod.slug}">${prod.name}</a>
             <p class="product-categories">${prod.categories}</p>
             <p class="product-price">$${prod.price.toFixed(2)}</p>
             <div class="quantity-selector">

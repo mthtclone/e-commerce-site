@@ -1,0 +1,118 @@
+---
+import "../../styles/productPage.scss";
+import products from "../../data/products.json";
+
+export async function getStaticPaths() {
+  return products.map((product) => ({
+    params: {
+      slug: product.slug,
+    },
+    props: {
+      product,
+    },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>{product.name}</title>
+  </head>
+
+  <body>
+    <main class="product-page">
+        <div class="product-page__container">
+          <div class="product-page__image">
+            <img
+              src={product.image}
+              alt={product.name}
+            />
+          </div>
+      
+          <div class="product-page__content">
+            <p class="product-page__category">
+              {product.categories}
+            </p>
+      
+            <h1>{product.name}</h1>
+      
+            <div class="product-page__status">
+              <span class="product-page__badge">
+                In Stock
+              </span>
+            </div>
+      
+            <h2 class="product-page__price">
+              MMK {product.price.toLocaleString()}
+            </h2>
+      
+            <p class="product-page__description">
+              {product.description}
+            </p>
+      
+            <div class="product-page__quantity">
+              <label for="quantity">
+                Quantity
+              </label>
+      
+              <select
+                id="quantity"
+                name="quantity"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+      
+            <div class="product-page__actions">
+              <button
+                class="product-page__btn product-page__btn--primary"
+              >
+                Add to Cart
+              </button>
+      
+              <button
+                class="product-page__btn product-page__btn--secondary"
+              >
+                Buy Now
+              </button>
+            </div>
+      
+            <div class="product-page__meta">
+              <p>
+                <strong>Category:</strong>
+                {product.categories}
+              </p>
+
+              <p>
+                <strong>Brand:</strong>
+                {product.brand}
+              </p>
+      
+              <p>
+                <strong>SKU:</strong>
+                {product.sku}
+              </p>
+            </div>
+      
+            <a
+              href="/"
+              class="product-page__back"
+            >
+              ← Continue Shopping
+            </a>
+          </div>
+        </div>
+      </main>
+  </body>
+</html>
