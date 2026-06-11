@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img src="${prod.image}" alt="${prod.name}" />
             <a class="product-title" href="/products/${prod.slug}">${prod.name}</a>
             <p class="product-categories">${prod.categories}</p>
-            <p class="product-price">$${prod.price.toFixed(2)}</p>
+            <p class="product-price">${prod.price.toFixed(2)} MMK</p>
             <div class="quantity-selector">
               <button class="decrease">-</button>
               <span class="quantity">${qty}</span>
